@@ -23,6 +23,7 @@ public class MovieController {
 //        }
 //    }
 
+    @CrossOrigin(origins="http://localhost:4200")
     @PostMapping
     public Movie create(@RequestBody Movie newMovie) {
         this.movieRepository.save(newMovie);
@@ -35,6 +36,7 @@ public class MovieController {
         return this.movieRepository.findAll();
     }
 
+    @CrossOrigin(origins="http://localhost:4200")
     @GetMapping({"id"})
     public Movie getMovie(@PathVariable long id) {
         Optional<Movie> result= this.movieRepository.findById(id);
