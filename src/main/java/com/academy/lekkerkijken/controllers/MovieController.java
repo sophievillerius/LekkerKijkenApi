@@ -37,12 +37,17 @@ public class MovieController {
     }
 
     @CrossOrigin(origins="http://localhost:4200")
-    @GetMapping({"id"})
+    @GetMapping("{id}")
     public Movie getMovie(@PathVariable long id) {
         Optional<Movie> result= this.movieRepository.findById(id);
         if (result.isPresent()) {
             return result.get();
         }
         return null;
+    }
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable long id) {
+        this.movieRepository.deleteById(id);
     }
 }
